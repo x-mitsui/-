@@ -19,28 +19,4 @@ module.exports = async (options) => {
   setTimeout(() => {
     process.exit(0);
   }, 1000);
-  // const script = path.resolve(__dirname, "../puppeteer/crawler.js");
-  // const child = cp.fork(script, []);
-
-  // let invoked = false;
-
-  // child.on("message", (data) => {
-  //   console.log(data);
-  // });
-
-  // child.on("exit", (code) => {
-  //   if (invoked) {
-  //     return;
-  //   }
-  //   invoked = true;
-  //   console.log(code);
-  // });
-
-  // child.on("error", (err) => {
-  //   if (invoked) {
-  //     return;
-  //   }
-  //   invoked = true;
-  //   console.log(err);
-  // });
 };
