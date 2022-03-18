@@ -12,13 +12,16 @@ crawler({
 
     $item.each((index, item) => {
       const $el = $(item)
-      const $itemLk = $el.find('.course-tab-filter-item')
-      data.push({
-        cid: index,
-        title: $itemLk.text().replace('促', ''),
-      })
+      const $itemLk = $el.find('.course-tab-filter-item'),
+        title = $itemLk.text().replace('促', '')
+      if (!title.includes('全部')) {
+        data.push({
+          cid: index,
+          title
+        })
+      }
     })
 
     return data
-  },
+  }
 })

@@ -24,11 +24,10 @@ crawler({
         description: $el.find('.item-status-step').text(),
         studentCount: parseInt($el.find('.item-user').text()),
 
-        field: -1, //分类
-        posterKey: '',
+        posterKey: ''
       })
     })
 
     return data
-  },
+  }
 })
