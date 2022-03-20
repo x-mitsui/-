@@ -6,7 +6,9 @@ crawler({
   callback() {
     const $ = window.$ //由此可知，这个回调是运行在浏览器环境下的
 
-    const $item = $('.course-card-list-multi-wrap .course-card-item')
+    const $item = $(
+      '.agency-course .course-card-list-1200-wrap .course-card-list .course-card-item'
+    )
 
     let data = []
 
