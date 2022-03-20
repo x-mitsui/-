@@ -22,7 +22,7 @@ class Crawler {
                 url: item.imgUrl,
                 bucket: qiniu.bucket.tximg.bucket_name,
 
-                ext: '.jpg',
+                ext: '.jpg'
               })
 
               if (imgData.key) {
@@ -47,7 +47,7 @@ class Crawler {
       },
       async error(err) {
         console.log(err)
-      },
+      }
     })
   }
 
@@ -60,7 +60,7 @@ class Crawler {
           const logoData = await qiniuUploads({
             url: data.logoUrl,
             bucket: qiniu.bucket.tximg.bucket_name,
-            ext: '.jpg',
+            ext: '.jpg'
           })
           if (logoData.key) {
             data.logoKey = logoData.key
@@ -83,7 +83,7 @@ class Crawler {
       },
       async error(err) {
         console.log(err)
-      },
+      }
     })
   }
 
@@ -97,7 +97,7 @@ class Crawler {
               const picData = await qiniuUploads({
                 url: item.imgUrl,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (picData.key) {
                 item.imgKey = picData.key
@@ -108,7 +108,7 @@ class Crawler {
               const teacherImgData = await qiniuUploads({
                 url: item.teacherImg,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (teacherImgData.key) {
                 item.teacherImgKey = teacherImgData.key
@@ -133,7 +133,7 @@ class Crawler {
       },
       async error(err) {
         console.log(err)
-      },
+      }
     })
   }
 
@@ -148,7 +148,7 @@ class Crawler {
               const picData = await qiniuUploads({
                 url: item.posterUrl,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (picData.key) {
                 item.posterImgKey = picData.key
@@ -173,7 +173,7 @@ class Crawler {
       },
       async error(err) {
         console.log(err)
-      },
+      }
     })
   }
 
@@ -188,7 +188,7 @@ class Crawler {
               const picData = await qiniuUploads({
                 url: item.profilePic,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (picData.key) {
                 item.profilePicKey = picData.key
@@ -212,7 +212,7 @@ class Crawler {
       },
       async error(err) {
         console.log('子进程错误:', err)
-      },
+      }
     })
   }
 
@@ -227,7 +227,7 @@ class Crawler {
               const picData = await qiniuUploads({
                 url: item.studentImg,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (picData.key) {
                 item.studentImgKey = picData.key
@@ -251,7 +251,7 @@ class Crawler {
       },
       async error(err) {
         console.log('子进程错误:', err)
-      },
+      }
     })
   }
 
@@ -279,7 +279,7 @@ class Crawler {
       },
       async error(err) {
         console.log('子进程错误:', err)
-      },
+      }
     })
   }
 
@@ -294,13 +294,13 @@ class Crawler {
               const picData = await qiniuUploads({
                 url: item.posterUrl,
                 bucket: qiniu.bucket.tximg.bucket_name,
-                ext: '.jpg',
+                ext: '.jpg'
               })
               if (picData.key) {
                 item.posterKey = picData.key
               }
             }
-
+            // console.log('vvvvvvvvvvvv:', item)
             const result = await addCourse(item)
 
             if (result) {
@@ -318,7 +318,7 @@ class Crawler {
       },
       async error(err) {
         console.log('子进程错误:', err)
-      },
+      }
     })
   }
 
@@ -333,7 +333,7 @@ class Crawler {
             const imgData = await qiniuUploads({
               url: data.poseterUrl,
               bucket: qiniu.bucket.tximg.bucket_name,
-              ext: '.jpg',
+              ext: '.jpg'
             })
 
             if (imgData.key) {
@@ -357,7 +357,7 @@ class Crawler {
       },
       async error(err) {
         console.log(err)
-      },
+      }
     })
   }
 }
