@@ -10,7 +10,7 @@ module.exports = async (options) => {
 
   await pg.goto(url, {
     timeout: 60 * 1000,
-    waitUntil: 'networkidle2', // 500ms只能没有发起连接，表示完成
+    waitUntil: 'networkidle2' // 500ms只能没有发起连接，表示完成
   })
 
   const result = await pg.evaluate(options.callback) //获取浏览器那边执行options.callback后的result
