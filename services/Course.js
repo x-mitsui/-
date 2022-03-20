@@ -1,25 +1,28 @@
-const CourseModel = require("../db/models/course");
+const CourseModel = require('../db/models/course')
+
 class CourseService {
   async addCourse(data) {
-    const cid = data.cid;
-    const result = await CourseModel.findOne(data, {
+    const cid = data.cid
+    const result = await CourseModel.findOne({
       where: { cid },
-    });
+      raw: true
+    })
     if (result) {
       return await CourseModel.update(data, {
-        where: { cid },
-      });
+        where: { cid }
+      })
     } else {
-      return await CourseModel.create(data);
+      return await CourseModel.create(data)
     }
   }
-  async getCourses() {
-    return await CourseModel.findAll({
+  getCourses() {
+    return CourseModel.findAll({
       attributes: {
-        exclude: ["createdAt", "updatedAt", "posterUrl", "description"],
+        exclude: ['createdAt', 'updatedAt', 'posterUrl', 'description']
       },
-    });
+      raw: true
+    })
   }
 }
 
-module.exports = new CourseService();
+module.exports = new CourseService()
