@@ -1,6 +1,6 @@
 const { redisGet, redisSet } = require('../libs/redisClient')
 const { returnInfo } = require('../libs/utils')
-const { getCourses } = require('../services/Course')
+const { getCourses, updateField } = require('../services/Course')
 const { getCoursesTab } = require('../services/CourseTab')
 const { API } = require('../config/error_config')
 class Index {
@@ -31,6 +31,20 @@ class Index {
     } catch (error) {
       console.log(error)
       ctx.body = returnInfo(API.GET_DATA_FAILED)
+    }
+  }
+
+  async updateCourseField(ctx, next) {
+    try {
+      const { cid, field } = ctx.query
+      const result = await updateField(cid, field)
+      ctx.body =
+        result[0] === 1
+          ? returnInfo(API.CHANGE_COURSE_FIELD_SUCCESS)
+          : returnInfo(API.CHANGE_COURSE_FIELD_FAILED)
+    } catch (error) {
+      console.log(error)
+      ctx.body = returnInfo(API.CHANGE_COURSE_FIELD_FAILED)
     }
   }
 }

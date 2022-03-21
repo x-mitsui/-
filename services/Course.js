@@ -23,6 +23,15 @@ class CourseService {
       raw: true
     })
   }
+  async updateField(cid, field) {
+    return await CourseModel.update(
+      { field },
+      {
+        where: { cid },
+        raw: true
+      }
+    )
+  }
 }
 
 module.exports = new CourseService()
