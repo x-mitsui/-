@@ -9,5 +9,6 @@ router.get('/update_course_field', loginCheck, indexController.updateCourseField
 
 router.get('/get_recom_courses_data', loginCheck, indexController.getRecomCoursesData)
 router.get('/get_sliders_data', loginCheck, indexController.getSlidersData)
+router.get('/get_collections_data', loginCheck, indexController.getCollectionsData)
 router.post('/update_status', loginCheck, indexController.updateStatus)
 module.exports = router

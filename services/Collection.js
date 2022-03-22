@@ -15,6 +15,28 @@ class CollectionService {
       return await CollectionModel.create(data)
     }
   }
+
+  async getCollections() {
+    return CollectionModel.findAll({
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'posterUrl', 'courseIdList']
+      },
+      raw: true
+    })
+  }
+
+  async updateCollectionStatus(cid, status) {
+    console.log('collection-status:', status)
+    return await CollectionModel.update(
+      {
+        status
+      },
+      {
+        where: { cid },
+        raw: true
+      }
+    )
+  }
 }
 
 module.exports = new CollectionService()

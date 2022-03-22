@@ -4,6 +4,7 @@ const { getCourses, updateField, updateCourseStatus } = require('../services/Cou
 const { getCoursesTab } = require('../services/CourseTab')
 const { getRecomCourses, updateRecomCourseStatus } = require('../services/RecomCourse')
 const { getSliders, updateSliderStatus } = require('../services/Slider')
+const { getCollections, updateCollectionStatus } = require('../services/Collection')
 const { API } = require('../config/error_config')
 class Index {
   async index(ctx, next) {
@@ -75,7 +76,10 @@ class Index {
         case 'slider':
           result = await updateSliderStatus(id, status)
           break
+        case 'collection':
+          result = await updateCollectionStatus(id, status)
 
+          break
         default:
           break
       }
@@ -91,6 +95,15 @@ class Index {
   async getSlidersData(ctx, next) {
     try {
       const data = await getSliders()
+      ctx.body = returnInfo(API.GET_DATA_SUCCESS, { data })
+    } catch (error) {
+      ctx.body = returnInfo(API.GET_DATA_FAILED, error.message)
+    }
+  }
+
+  async getCollectionsData(ctx, next) {
+    try {
+      const data = await getCollections()
       ctx.body = returnInfo(API.GET_DATA_SUCCESS, { data })
     } catch (error) {
       ctx.body = returnInfo(API.GET_DATA_FAILED, error.message)
