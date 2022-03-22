@@ -30,38 +30,44 @@ const CollectionModel = seq.define('collection', {
     comment: 'collection id',
     type: DECIMAL,
     allowNull: false,
-    unique: true,
+    unique: true
   },
   title: {
     comment: 'course title',
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   info: {
     comment: 'course infomation',
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   QQLink: {
     comment: 'the link to open QQ communication',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   posterUrl: {
     comment: 'poster image url',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   posterImgKey: {
     comment: "poster image's qiniu key",
     type: STRING(50),
-    allowNull: false,
+    allowNull: false
   },
   courseIdList: {
     comment: 'the collection for containing course ids',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
+  status: {
+    comment: 'the collection status',
+    type: INTEGER(1),
+    defaultValue: 1,
+    allowNull: false
+  }
 })
 
 module.exports = CollectionModel

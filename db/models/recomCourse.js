@@ -82,7 +82,7 @@ const RecomCourseModel = seq.define('recom_course', {
     allowNull: false
   },
   status: {
-    comment: 'the course status',
+    comment: 'the recom course status',
     type: INTEGER(1),
     defaultValue: 1,
     allowNull: false
