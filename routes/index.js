@@ -6,8 +6,8 @@ const loginCheck = require('../middlewares/loginCheck')
 router.get('/', indexController.index)
 router.get('/get_courses_data', loginCheck, indexController.getCoursesData)
 router.get('/update_course_field', loginCheck, indexController.updateCourseField)
-router.post('/update_course_status', loginCheck, indexController.updateCourseStatus)
 
 router.get('/get_recom_courses_data', loginCheck, indexController.getRecomCoursesData)
-router.post('/update_recom_course_status', loginCheck, indexController.updateRecomCourseStatus)
+router.get('/get_sliders_data', loginCheck, indexController.getSlidersData)
+router.post('/update_status', loginCheck, indexController.updateStatus)
 module.exports = router

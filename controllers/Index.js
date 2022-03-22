@@ -1,8 +1,9 @@
 const { redisGet, redisSet } = require('../libs/redisClient')
 const { returnInfo } = require('../libs/utils')
-const { getCourses, updateField, updateStatus } = require('../services/Course')
+const { getCourses, updateField, updateCourseStatus } = require('../services/Course')
 const { getCoursesTab } = require('../services/CourseTab')
 const { getRecomCourses, updateRecomCourseStatus } = require('../services/RecomCourse')
+const { getSliders, updateSliderStatus } = require('../services/Slider')
 const { API } = require('../config/error_config')
 class Index {
   async index(ctx, next) {
@@ -49,20 +50,6 @@ class Index {
     }
   }
 
-  async updateCourseStatus(ctx, next) {
-    try {
-      const { cid, status } = ctx.request.body
-      const result = await updateStatus(cid, status)
-      ctx.body =
-        result[0] === 1
-          ? returnInfo(API.CHANGE_COURSE_STATUS_SUCCESS)
-          : returnInfo(API.CHANGE_COURSE_STATUS_FAILED)
-    } catch (error) {
-      console.log(error)
-      ctx.body = returnInfo(API.CHANGE_COURSE_STATUS_FAILED)
-    }
-  }
-
   async getRecomCoursesData(ctx, next) {
     try {
       const data = await getRecomCourses()
@@ -73,18 +60,40 @@ class Index {
     }
   }
 
-  async updateRecomCourseStatus(ctx, next) {
+  async updateStatus(ctx, next) {
     try {
-      const { cid, status } = ctx.request.body
-      console.log('status:', status)
-      const result = await updateRecomCourseStatus(cid, status)
+      const { category, id, status } = ctx.request.body
+
+      let result = null
+      switch (category) {
+        case 'course':
+          result = await updateCourseStatus(id, status)
+          break
+        case 'recom_course':
+          result = await updateRecomCourseStatus(id, status)
+          break
+        case 'slider':
+          result = await updateSliderStatus(id, status)
+          break
+
+        default:
+          break
+      }
       ctx.body =
         result[0] === 1
-          ? returnInfo(API.CHANGE_COURSE_STATUS_SUCCESS)
-          : returnInfo(API.CHANGE_COURSE_STATUS_FAILED)
+          ? returnInfo(API.CHANGE_STATUS_SUCCESS)
+          : returnInfo(API.CHANGE_STATUS_FAILED)
     } catch (error) {
-      console.log(error)
-      ctx.body = returnInfo(API.CHANGE_COURSE_STATUS_FAILED)
+      ctx.body = returnInfo(API.CHANGE_STATUS_FAILED, error.message)
+    }
+  }
+
+  async getSlidersData(ctx, next) {
+    try {
+      const data = await getSliders()
+      ctx.body = returnInfo(API.GET_DATA_SUCCESS, { data })
+    } catch (error) {
+      ctx.body = returnInfo(API.GET_DATA_FAILED, error.message)
     }
   }
 }

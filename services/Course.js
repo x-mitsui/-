@@ -33,7 +33,7 @@ class CourseService {
     )
   }
 
-  async updateStatus(cid, status) {
+  async updateCourseStatus(cid, status) {
     console.log('status:', status)
     return await CourseModel.update(
       {
