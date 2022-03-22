@@ -24,63 +24,69 @@ const RecomCourseModel = seq.define('recom_course', {
     comments: 'course id',
     type: INTEGER,
     allowNull: false,
-    unique: true,
+    unique: true
   },
   href: {
     comment: 'recommend course url',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   mainTitle: {
     comment: "recommend course's main title",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   title: {
     comment: "recommend course's title",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   imgUrl: {
     comment: "url of recommend course's image ",
     type: STRING(200),
-    allowNull: false,
+    allowNull: false
   },
   imgKey: {
     comment: "the qiuniu key recommend course's image_url ",
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   description: {
     comment: "recommend course's description ",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   teacherImg: {
     comment: "recommend course's teacherImg url",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   teacherImgKey: {
     comment: "qiniu key of recommend course's teacherImgKey ",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   teacherName: {
     comment: "recommend course's teacherName ",
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   buyCount: {
     comment: "recommend course's purchase quantity ",
     type: DECIMAL,
-    allowNull: false,
+    allowNull: false
   },
   price: {
     comment: "recommend course's price ",
     type: INTEGER,
-    allowNull: false,
+    allowNull: false
   },
+  status: {
+    comment: 'the course status',
+    type: INTEGER(1),
+    defaultValue: 1,
+    allowNull: false
+  }
 })
 
 module.exports = RecomCourseModel
