@@ -32,6 +32,19 @@ class CourseService {
       }
     )
   }
+
+  async updateStatus(cid, status) {
+    console.log('status:', status)
+    return await CourseModel.update(
+      {
+        status
+      },
+      {
+        where: { cid },
+        raw: true
+      }
+    )
+  }
 }
 
 module.exports = new CourseService()
