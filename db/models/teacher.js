@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const seq = require('../connection/mysql_connect')
 
-const { STRING, INTEGER, BIGINT } = Sequelize
+const { STRING, INTEGER, BIGINT, BOOLEAN } = Sequelize
 
 /*
   tid: index + 1,
@@ -18,38 +18,55 @@ const TeacherModel = seq.define('teacher', {
     comment: 'teacher ID',
     type: STRING(20),
     allowNull: false,
-    unique: true, // cid唯一
+    unique: true // cid唯一
+  },
+  href: {
+    comment: 'the teacher detail page link',
+    type: STRING(50),
+    allowNull: false
   },
   name: {
     comment: "the teacher's name",
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   courseNum: {
     comment: 'the quantity of teacher‘s course',
     type: INTEGER(20),
-    allowNull: false,
+    allowNull: false
   },
   studentsNum: {
     comment: 'students quantity of the teacher',
     type: INTEGER(20),
-    allowNull: false,
+    allowNull: false
   },
   introduction: {
     comment: 'teacher’s introduction',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   profilePic: {
     comment: 'teacher profile image url',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   profilePicKey: {
     comment: 'teacher profile image qiniu key',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
+  status: {
+    comment: 'the course status',
+    type: INTEGER(1),
+    defaultValue: 1,
+    allowNull: false
+  },
+  isStar: {
+    comment: 'if the teacher is a star',
+    type: BOOLEAN,
+    defaultValue: false,
+    allowNull: false
+  }
 })
 
 module.exports = TeacherModel

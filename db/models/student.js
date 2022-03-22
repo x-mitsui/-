@@ -19,38 +19,44 @@ const StudentModel = seq.define('student', {
     comment: 'student ID',
     type: INTEGER(10),
     allowNull: false,
-    unique: true, // sid唯一
+    unique: true // sid唯一
   },
   studentName: {
     comment: "the student's name",
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   courseName: {
     comment: 'the course that the student participate',
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   courseLink: {
     comment: 'the course link that the student participate',
     type: STRING(80),
-    allowNull: false,
+    allowNull: false
   },
   intro: {
     comment: 'student’s introduction',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   studentImg: {
     comment: 'student profile image url',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   studentImgKey: {
     comment: 'student profile image qiniu key',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
+  status: {
+    comment: 'the student status',
+    type: INTEGER(1),
+    defaultValue: 1,
+    allowNull: false
+  }
 })
 
 module.exports = StudentModel
