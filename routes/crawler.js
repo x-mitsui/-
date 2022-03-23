@@ -13,6 +13,8 @@ router.get('/crawl_student', crawlerController.crawlStudent)
 router.get('/crawl_course_tab', crawlerController.crawlCourseTab)
 router.get('/crawl_course', crawlerController.crawlCourse)
 router.get('/crawl_about', crawlerController.crawlAbout)
+
+router.post('/crawl_action', crawlerController.crawlAction.bind(crawlerController))
 // router.post('/crawl_about', crawlerController.crawlAbout)
 // 批量给各个路由添加前置中间件
 router.stack.forEach((route) => {
