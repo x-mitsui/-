@@ -32,10 +32,12 @@ crawler({
             .text()
             .replace(/[^0-9]/gi, '')
         ),
-        price: Number($el.find('.price-origin ').text().slice(1)),
+        price: Number(
+          $el.find('.spread-course-wrap .spread-course-price').text().replace(/¥/, '').trim()
+        )
       }
       data.push(dataItem)
     })
     return data
-  },
+  }
 })
