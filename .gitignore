@@ -1,2 +1,4 @@
 node_modules
-config
+config/config.js
+config/db_config.js
+config/env_config.js
