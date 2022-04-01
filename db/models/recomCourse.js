@@ -48,7 +48,7 @@ const RecomCourseModel = seq.define('recom_course', {
   },
   imgKey: {
     comment: "the qiuniu key recommend course's image_url ",
-    type: STRING(30),
+    type: STRING(200),
     allowNull: false
   },
   description: {
