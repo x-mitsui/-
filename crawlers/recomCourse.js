@@ -19,10 +19,13 @@ crawler({
         href: $itemLk.prop('href'),
         mainTitle,
         title: $itemLk.prop('title'),
-        imgUrl: $itemLk.find('.spread-course-cover').prop('src'),
+        imgUrl: $itemLk.find('.spread-course-cover').prop('src').replace('webp', ''),
         imgKey: '',
         description: $el.find('.spread-course-wrap .spread-course-des').text(),
-        teacherImg: $el.find('.spread-course-wrap .spread-course-face img').prop('src'),
+        teacherImg: $el
+          .find('.spread-course-wrap .spread-course-face img')
+          .prop('src')
+          .replace('webp', ''),
         teacherImgKey: '',
         teacherName: $el.find('.spread-course-wrap .spread-course-face span:eq(0)').text(),
         buyCount: parseInt(

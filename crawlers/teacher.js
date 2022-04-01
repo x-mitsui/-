@@ -31,7 +31,7 @@ crawler({
             .replace(/[^0-9]/g, '')
         ),
         introduction: $el.find('.tea-main-cnt').text(),
-        profilePic: 'http:' + $el.find('img').attr('lazy-src'), //这里注意，使用lazy-src，因为注意到图片未加载时，没有src属性
+        profilePic: 'http:' + $el.find('img').attr('lazy-src').replace('webp', ''), //这里注意，使用lazy-src，因为注意到图片未加载时，没有src属性
         profilePicKey: ''
       })
     })

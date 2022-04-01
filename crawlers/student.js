@@ -15,15 +15,15 @@ crawler({
       data.push({
         sid: index + 1,
 
-        studentImg: $el.find('.stu-img').prop('src'),
+        studentImg: $el.find('.stu-img').prop('src').replace('webp', ''),
         studentName: $el.find('.stu-main h4').text(),
         intro: $el.find('.stu-main-cnt ').text().trim(), // 取出'\n'和空格
         courseName: $el.find('.stu-main-tit').text().trim(),
         courseLink: $el.find('.stu-main-tit').prop('href'),
-        studentImgKey: '',
+        studentImgKey: ''
       })
     })
 
     return data
-  },
+  }
 })

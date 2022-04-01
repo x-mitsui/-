@@ -15,14 +15,14 @@ crawler({
       const dataItem = {
         cid: $elLink.attr('data-id'),
         href: $elLink.prop('href'),
-        imgUrl: $elLink.find('img').prop('src'),
+        imgUrl: $elLink.find('img').prop('src').replace('webp', ''),
         title: $elLink.prop('title'),
-        imgKey: '',
+        imgKey: ''
       }
 
       data.push(dataItem)
     })
 
     return data
-  },
+  }
 })

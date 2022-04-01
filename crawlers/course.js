@@ -19,7 +19,7 @@ crawler({
       data.push({
         cid: $itemLk.attr('data-id'),
         href: $itemLk.prop('href'),
-        posterUrl: $itemLk.find('.item-img').prop('src'),
+        posterUrl: $itemLk.find('.item-img').prop('src').replace('webp', ''),
         courseName: $itemLk.find('.item-img').prop('title'),
         price:
           $el.find('.item-price').text() == '免费' ? '0' : $el.find('.item-price').text().slice(1),
