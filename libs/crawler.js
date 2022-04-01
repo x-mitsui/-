@@ -15,7 +15,7 @@ module.exports = async (options) => {
     const pg = await browser.newPage()
 
     await pg.goto(url, {
-      timeout: 0, //无穷大
+      timeout: 0, //无穷大，时间过小会影响爬取，时间长如果报错，会由子进程抛出error
       waitUntil: 'networkidle2' // 500ms只能没有发起连接，表示完成
     })
     /** 前端路由多页面情况
