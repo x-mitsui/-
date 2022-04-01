@@ -12,8 +12,8 @@ const { qiniu } = require('../config/config')
 const { CRAWLER } = require('../config/error_config')
 
 class Crawler {
-  crawlSliderData(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlSliderData(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'slider',
         async message(data) {
@@ -24,6 +24,7 @@ class Crawler {
                 const imgData = await qiniuUploads({
                   url: item.imgUrl,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
 
                   ext: '.jpg'
                 })
@@ -50,14 +51,14 @@ class Crawler {
           console.log(code)
         },
         async error(err) {
-          reject(returnInfo(CRAWLER.CRAWL_DATA_FAILED))
+          resolve(returnInfo(CRAWLER.CRAWL_DATA_FAILED))
         }
       })
     })
   }
 
-  crawlAgencyInfo(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlAgencyInfo(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'agencyInfo',
         async message(data) {
@@ -66,6 +67,7 @@ class Crawler {
             const logoData = await qiniuUploads({
               url: data.logoUrl,
               bucket: qiniu.bucket.tximg.bucket_name,
+              dirName: 'crawled-img/',
               ext: '.jpg'
             })
             if (logoData.key) {
@@ -97,8 +99,8 @@ class Crawler {
     })
   }
 
-  crawlRecomCourse(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlRecomCourse(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'recomCourse',
         async message(data) {
@@ -108,6 +110,7 @@ class Crawler {
                 const picData = await qiniuUploads({
                   url: item.imgUrl,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (picData.key) {
@@ -119,6 +122,7 @@ class Crawler {
                 const teacherImgData = await qiniuUploads({
                   url: item.teacherImg,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (teacherImgData.key) {
@@ -151,8 +155,8 @@ class Crawler {
     })
   }
 
-  crawlCollection(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlCollection(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'collection',
         async message(data) {
@@ -163,6 +167,7 @@ class Crawler {
                 const picData = await qiniuUploads({
                   url: item.posterUrl,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (picData.key) {
@@ -195,8 +200,8 @@ class Crawler {
     })
   }
 
-  crawlTeacher(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlTeacher(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'teacher',
         async message(data) {
@@ -207,6 +212,7 @@ class Crawler {
                 const picData = await qiniuUploads({
                   url: item.profilePic,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (picData.key) {
@@ -238,8 +244,8 @@ class Crawler {
     })
   }
 
-  crawlStudent(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlStudent(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'student',
         async message(data) {
@@ -250,6 +256,7 @@ class Crawler {
                 const picData = await qiniuUploads({
                   url: item.studentImg,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (picData.key) {
@@ -281,8 +288,8 @@ class Crawler {
     })
   }
 
-  crawlCourseTab(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlCourseTab(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'courseTab',
         async message(data) {
@@ -313,8 +320,8 @@ class Crawler {
     })
   }
 
-  crawlCourse(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlCourse(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'course',
         async message(data) {
@@ -325,6 +332,7 @@ class Crawler {
                 const picData = await qiniuUploads({
                   url: item.posterUrl,
                   bucket: qiniu.bucket.tximg.bucket_name,
+                  dirName: 'crawled-img/',
                   ext: '.jpg'
                 })
                 if (picData.key) {
@@ -356,8 +364,8 @@ class Crawler {
     })
   }
 
-  crawlAbout(ctx, next) {
-    return new Promise((resolve, reject) => {
+  async crawlAbout(ctx, next) {
+    ctx.body = await new Promise((resolve, reject) => {
       startProcess({
         file: 'about',
         async message(data) {
@@ -368,6 +376,7 @@ class Crawler {
               const imgData = await qiniuUploads({
                 url: data.poseterUrl,
                 bucket: qiniu.bucket.tximg.bucket_name,
+                dirName: 'crawled-img/',
                 ext: '.jpg'
               })
 
@@ -399,6 +408,9 @@ class Crawler {
     })
   }
 
+  /**
+   * depreciated
+   */
   crawlAction(ctx, next) {
     const { api } = ctx.request.body
     console.log('this:', this) //undefined

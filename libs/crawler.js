@@ -7,9 +7,9 @@ module.exports = async (options) => {
     // const browser = await pt.launch({ headless: false })
     const browser = await pt.launch({
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      handleSIGINT: false,
-      ignoreDefaultArgs: ['--disable-extensions'],
-      executablePath: '/root/.chromium-browser-snapshots/linux-722234/chrome-linux/chrome'
+      handleSIGINT: false
+      // ignoreDefaultArgs: ['--disable-extensions'],
+      // executablePath: '/root/.chromium-browser-snapshots/linux-722234/chrome-linux/chrome'
     })
     const url = options.url
     const pg = await browser.newPage()
