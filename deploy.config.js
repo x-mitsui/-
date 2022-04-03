@@ -37,7 +37,7 @@ module.exports = {
       repo: 'https://gitee.com/x_mitsui/txclass_api.git',
       // ssh_options: 'StrictHostKeyChecking=no', // 取消 key 校验，针对ssh
       path: '/www/official_web_site_api/production', //DESTINATION_PATH
-      // 'pre-deploy': 'git fetch --all',
+      'pre-deploy': 'git fetch --all', //如果是第二次运行此脚本，就需要先更新git
       'post-deploy': 'yarn && yarn prd'
     }
   }
