@@ -42,7 +42,7 @@ module.exports = {
       user: 'root',
       host: '47.94.144.41',
       ref: 'origin/main',
-      repo: 'https://github.com/x-mitsui/txclass_api.git',
+      repo: 'https://gitee.com/x_mitsui/txclass_api.git',
       path: '/www/official_web_site_api/production',
       'pre-deploy': 'git fetch --all',
       'post-deploy': 'yarn && yarn run prd && pm2 startOrRestart deploy'
