@@ -19,7 +19,7 @@ module.exports = {
       ref: 'origin/main',
       repo: 'https://gitee.com/x_mitsui/txclass_api.git',
       path: '/www/official_web_site_api/production', //DESTINATION_PATH
-      'pre-deploy': 'git fetch --all',
+      // 'pre-deploy': 'git fetch --all',
       'post-deploy': 'yarn && yarn prd'
     }
   }
