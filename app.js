@@ -19,9 +19,7 @@ onerror(app)
 // middlewares
 app.use(
   cors({
-    origin: function (ctx) {
-      return corsOrigin
-    },
+    origin: corsOrigin,
     // 允许客户端发送携带cookie验证信息的请求
     credentials: true
   })
