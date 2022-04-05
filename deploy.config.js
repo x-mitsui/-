@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'official_web_site_api',
+      name: 'txclass_api',
       script: 'app.js',
       // cwd: './', // 当前工作路径
       // watch: true, // 监控变化的目录
@@ -34,9 +34,9 @@ module.exports = {
       user: 'root', //SSH_USERNAME
       host: '47.94.144.41', //SSH_HOSTMACHINE
       ref: 'origin/main',
-      repo: 'https://gitee.com/x_mitsui/txclass_api.git',
-      // ssh_options: 'StrictHostKeyChecking=no', // 取消 key 校验，针对ssh
-      path: '/www/official_web_site_api/production', //DESTINATION_PATH
+      repo: 'git@gitee.com:x_mitsui/txclass_api.git',
+      ssh_options: 'StrictHostKeyChecking=no', // 取消 key 校验，针对ssh
+      path: '/www/txclass_api/production', //DESTINATION_PATH
       'pre-deploy': 'git fetch --all', //如果是第二次运行此脚本，就需要先更新git
       'post-deploy': 'pnpm install && pnpm prd'
     }
