@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'txclass_api',
-      script: 'app.js',
+      script: 'bin/www',
       // cwd: './', // 当前工作路径
       // watch: true, // 监控变化的目录
       // exec_mode: 'cluster', // 集群模式
