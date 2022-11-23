@@ -8,6 +8,7 @@ const { getCollections, updateCollectionStatus } = require('../services/Collecti
 const { getTeachers, updateTeacherStatus, updateTeacherStar } = require('../services/Teacher')
 const { getStudents, updateStudentStatus } = require('../services/Student')
 const { API } = require('../config/error_config')
+const fetch = require('node-fetch-commonjs')
 class Index {
   async index(ctx, next) {
     const sess = ctx.session
@@ -26,7 +27,7 @@ class Index {
     ctx.body = {
       session: sess
     }
-    // ctx.render('index')
+    // await ctx.render('index')
   }
 
   async getCoursesData(ctx, next) {
@@ -144,6 +145,28 @@ class Index {
     } catch (error) {
       ctx.body = returnInfo(API.GET_DATA_FAILED, error.message)
     }
+  }
+
+  async wechat(ctx, next) {
+    const { signature, echostr, timestamp, nonce } = ctx.query
+    ctx.body = echostr
+  }
+
+  async wechatRedirect(ctx, next) {
+    const { code } = ctx.query
+    console.log(code)
+    await ctx.render('wechatRedirect')
+    const APPID = 'wx4b630b1fe0c98072'
+    const SECRET = 'caa4d070110a9816fe8246707b60f9ae'
+    const url = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${APPID}&secret=${SECRET}&code=${code}&grant_type=authorization_code`
+    const res = await fetch(url)
+    const json = await res.json()
+    console.log(json)
+    const { access_token, openid } = json
+    const url2 = `https://api.weixin.qq.com/sns/userinfo?access_token=${access_token}&openid=${openid}&lang=zh_CN`
+    const res2 = await fetch(url2)
+    const json2 = await res2.json()
+    console.log(json2)
   }
 }
 

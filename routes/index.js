@@ -14,4 +14,6 @@ router.get('/get_teachers_data', loginCheck, indexController.getTeachersData)
 router.post('/update_teacher_star', loginCheck, indexController.updateTeacherStar)
 router.get('/get_students_data', loginCheck, indexController.getStudentsData)
 router.post('/update_status', loginCheck, indexController.updateStatus)
+router.get('/token', indexController.wechat)
+router.get('/wechatRedirect', indexController.wechatRedirect)
 module.exports = router
