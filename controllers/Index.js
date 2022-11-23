@@ -157,7 +157,7 @@ class Index {
     console.log(code)
     await ctx.render('wechatRedirect')
     const APPID = 'wx4b630b1fe0c98072'
-    const SECRET = 'caa4d070110a9816fe8246707b60f9ae'
+    const SECRET = ''
     const url = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${APPID}&secret=${SECRET}&code=${code}&grant_type=authorization_code`
     const res = await fetch(url)
     const json = await res.json()
